@@ -1,0 +1,445 @@
+/* PlanetCard Component Styles */
+/* Interactive planet card for space map */
+
+.planet-card {
+  position: relative;
+  background: rgba(30, 42, 74, 0.8);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(106, 70, 193, 0.3);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.planet-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(16, 242, 197, 0.05) 0%, rgba(255, 215, 0, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.planet-card:hover::before {
+  opacity: 1;
+}
+
+.planet-card:hover {
+  border-color: #10F2C5;
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(106, 70, 193, 0.3);
+}
+
+.planet-card.clickable {
+  cursor: pointer;
+}
+
+.planet-card.locked {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.planet-card.completed {
+  border-color: #10F2C5;
+  background: rgba(16, 242, 197, 0.05);
+}
+
+.planet-card.completed::before {
+  opacity: 1;
+}
+
+/* Planet Header */
+.planet-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.planet-card-icon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.planet-card-icon::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(45deg);
+  transition: all 0.6s ease;
+}
+
+.planet-card:hover .planet-card-icon::before {
+  transform: rotate(45deg) translate(100%, 100%);
+}
+
+.planet-card-icon.mercury {
+  background: linear-gradient(135deg, #8C7853, #B8A082);
+}
+
+.planet-card-icon.venus {
+  background: linear-gradient(135deg, #FFC649, #FF8C00);
+}
+
+.planet-card-icon.earth {
+  background: linear-gradient(135deg, #4A90E2, #7ED321);
+}
+
+.planet-card-icon.mars {
+  background: linear-gradient(135deg, #CD5C5C, #FF6347);
+}
+
+.planet-card-icon.jupiter {
+  background: linear-gradient(135deg, #D2691E, #FFD700);
+}
+
+.planet-card-icon.saturn {
+  background: linear-gradient(135deg, #FAD5A5, #FFE55C);
+}
+
+.planet-card-icon.uranus {
+  background: linear-gradient(135deg, #4FD1C7, #81E6D9);
+}
+
+.planet-card-icon.neptune {
+  background: linear-gradient(135deg, #4A90E2, #7B68EE);
+}
+
+.planet-card-status {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.planet-card-status.completed {
+  background: rgba(16, 242, 197, 0.2);
+  color: #10F2C5;
+}
+
+.planet-card-status.in-progress {
+  background: rgba(255, 215, 0, 0.2);
+  color: #FFD700;
+}
+
+.planet-card-status.locked {
+  background: rgba(100, 116, 139, 0.2);
+  color: #64748B;
+}
+
+.planet-card-status-icon {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+/* Planet Content */
+.planet-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 2;
+}
+
+.planet-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #F8FAFC;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.planet-card-description {
+  color: #64748B;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+/* Planet Stats */
+.planet-card-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.planet-card-stat {
+  text-align: center;
+  padding: 0.5rem;
+  background: rgba(11, 20, 38, 0.5);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(106, 70, 193, 0.2);
+}
+
+.planet-card-stat-value {
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: #F8FAFC;
+  margin-bottom: 0.125rem;
+}
+
+.planet-card-stat-label {
+  font-size: 0.75rem;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Progress Section */
+.planet-card-progress {
+  margin-bottom: 1rem;
+}
+
+.planet-card-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.planet-card-progress-label {
+  font-size: 0.875rem;
+  color: #F8FAFC;
+  font-weight: 500;
+}
+
+.planet-card-progress-percentage {
+  font-size: 0.875rem;
+  color: #10F2C5;
+  font-weight: bold;
+}
+
+.planet-card-progress-bar {
+  width: 100%;
+  height: 0.5rem;
+  background: rgba(11, 20, 38, 0.5);
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+.planet-card-progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, #6B46C1, #10F2C5);
+  border-radius: 0.25rem;
+  transition: width 0.5s ease;
+}
+
+/* Planet Actions */
+.planet-card-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+
+.planet-card-button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.planet-card-button-primary {
+  background: linear-gradient(to right, #6B46C1, #10F2C5);
+  color: white;
+}
+
+.planet-card-button-primary:hover {
+  background: linear-gradient(to right, #A855F7, #10F2C5);
+  transform: translateY(-1px);
+}
+
+.planet-card-button-secondary {
+  background: rgba(11, 20, 38, 0.5);
+  color: #F8FAFC;
+  border: 1px solid rgba(106, 70, 193, 0.3);
+}
+
+.planet-card-button-secondary:hover {
+  background: rgba(106, 70, 193, 0.3);
+  border-color: #10F2C5;
+}
+
+.planet-card-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.planet-card-button-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Locked State */
+.planet-card.locked .planet-card-icon {
+  filter: grayscale(0.5);
+  opacity: 0.7;
+}
+
+.planet-card.locked .planet-card-title {
+  color: #64748B;
+}
+
+.planet-card.locked .planet-card-description {
+  color: #475569;
+}
+
+.planet-card.locked .planet-card-stats {
+  opacity: 0.5;
+}
+
+/* Completed State */
+.planet-card.completed .planet-card-icon {
+  box-shadow: 0 0 20px rgba(16, 242, 197, 0.5);
+}
+
+.planet-card.completed .planet-card-title {
+  color: #10F2C5;
+}
+
+/* Animations */
+@keyframes planetRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.planet-card-icon.rotating {
+  animation: planetRotate 20s linear infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.planet-card.pulsing {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .planet-card {
+    padding: 1rem;
+    min-height: 180px;
+  }
+  
+  .planet-card-icon {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+  
+  .planet-card-title {
+    font-size: 1.25rem;
+  }
+  
+  .planet-card-stats {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .planet-card-actions {
+    flex-direction: column;
+  }
+  
+  .planet-card-button {
+    justify-content: center;
+  }
+}
+
+/* Focus styles for accessibility */
+.planet-card:focus-visible,
+.planet-card-button:focus-visible {
+  outline: 2px solid #10F2C5;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .planet-card {
+    background: #000000;
+    border-color: #ffffff;
+  }
+  
+  .planet-card-button {
+    background: #000000;
+    border-color: #ffffff;
+    color: #ffffff;
+  }
+  
+  .planet-card-stat {
+    background: #000000;
+    border-color: #ffffff;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .planet-card,
+  .planet-card-button {
+    transition: none;
+  }
+  
+  .planet-card::before,
+  .planet-card-icon::before {
+    transition: none;
+  }
+  
+  .planet-card-icon.rotating {
+    animation: none;
+  }
+  
+  .planet-card.pulsing {
+    animation: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .planet-card {
+    background: white;
+    border: 1px solid #000000;
+    box-shadow: none;
+  }
+  
+  .planet-card-icon {
+    box-shadow: none;
+  }
+}

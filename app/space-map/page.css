@@ -1,0 +1,464 @@
+/* Space Map Page Styles */
+/* Interactive space map with planetary exploration */
+
+.space-map-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0B1426 0%, #1E2A4A 50%, #6B46C1 100%);
+  padding: 2rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.space-map-container {
+  max-width: 80rem;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.space-map-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.space-map-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #F8FAFC;
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+}
+
+@media (min-width: 768px) {
+  .space-map-title {
+    font-size: 3.5rem;
+  }
+}
+
+.space-map-title-gradient {
+  background: linear-gradient(to right, #10F2C5, #FFD700);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.space-map-subtitle {
+  font-size: 1.25rem;
+  color: #64748B;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .space-map-subtitle {
+    font-size: 1.5rem;
+  }
+}
+
+/* Space Background */
+.space-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 30%, rgba(16, 242, 197, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 40% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(2px 2px at 160px 30px, #ddd, transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: twinkle 3s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+/* Planet Grid */
+.planets-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .planets-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.planet-card {
+  background: rgba(30, 42, 74, 0.8);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(106, 70, 193, 0.3);
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.planet-card:hover {
+  border-color: #10F2C5;
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(106, 70, 193, 0.3);
+}
+
+.planet-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(16, 242, 197, 0.1) 0%, rgba(255, 215, 0, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.planet-card:hover::before {
+  opacity: 1;
+}
+
+.planet-icon {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.planet-icon.mercury {
+  background: linear-gradient(135deg, #8C7853, #B8A082);
+}
+
+.planet-icon.venus {
+  background: linear-gradient(135deg, #FFC649, #FF8C00);
+}
+
+.planet-icon.earth {
+  background: linear-gradient(135deg, #4A90E2, #7ED321);
+}
+
+.planet-icon.mars {
+  background: linear-gradient(135deg, #CD5C5C, #FF6347);
+}
+
+.planet-icon.jupiter {
+  background: linear-gradient(135deg, #D2691E, #FFD700);
+}
+
+.planet-icon.saturn {
+  background: linear-gradient(135deg, #FAD5A5, #FFE55C);
+}
+
+.planet-icon.uranus {
+  background: linear-gradient(135deg, #4FD1C7, #81E6D9);
+}
+
+.planet-icon.neptune {
+  background: linear-gradient(135deg, #4A90E2, #7B68EE);
+}
+
+.planet-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #F8FAFC;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.planet-description {
+  color: #64748B;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.planet-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.planet-stat {
+  text-align: center;
+  padding: 0.75rem;
+  background: rgba(11, 20, 38, 0.5);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(106, 70, 193, 0.2);
+}
+
+.planet-stat-value {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #F8FAFC;
+  margin-bottom: 0.25rem;
+}
+
+.planet-stat-label {
+  font-size: 0.75rem;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.planet-button {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(to right, #6B46C1, #10F2C5);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.planet-button:hover {
+  background: linear-gradient(to right, #A855F7, #10F2C5);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(106, 70, 193, 0.3);
+}
+
+.planet-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Mission Progress */
+.mission-progress {
+  background: rgba(30, 42, 74, 0.8);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(106, 70, 193, 0.3);
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+.mission-progress-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.mission-progress-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #F8FAFC;
+  margin-bottom: 0.5rem;
+}
+
+.mission-progress-description {
+  color: #64748B;
+  font-size: 1rem;
+}
+
+.mission-stats {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.mission-stat {
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(11, 20, 38, 0.5);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(106, 70, 193, 0.2);
+}
+
+.mission-stat-icon {
+  width: 3rem;
+  height: 3rem;
+  background: linear-gradient(to right, #6B46C1, #10F2C5);
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  margin: 0 auto 1rem;
+}
+
+.mission-stat-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #F8FAFC;
+  margin-bottom: 0.5rem;
+}
+
+.mission-stat-label {
+  font-size: 0.875rem;
+  color: #64748B;
+  font-weight: 500;
+}
+
+/* Navigation */
+.space-map-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.nav-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-button-primary {
+  background: linear-gradient(to right, #6B46C1, #10F2C5);
+  color: white;
+}
+
+.nav-button-primary:hover {
+  background: linear-gradient(to right, #A855F7, #10F2C5);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(106, 70, 193, 0.3);
+}
+
+.nav-button-secondary {
+  background: rgba(30, 42, 74, 0.8);
+  color: #F8FAFC;
+  border: 1px solid rgba(106, 70, 193, 0.3);
+}
+
+.nav-button-secondary:hover {
+  background: rgba(106, 70, 193, 0.3);
+  border-color: #10F2C5;
+  transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .space-map-page {
+    padding: 1rem;
+  }
+  
+  .space-map-title {
+    font-size: 2rem;
+  }
+  
+  .planets-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .planet-icon {
+    width: 4rem;
+    height: 4rem;
+    font-size: 2rem;
+  }
+  
+  .planet-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .mission-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .space-map-navigation {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .nav-button {
+    justify-content: center;
+  }
+}
+
+/* Focus styles for accessibility */
+.planet-button:focus-visible,
+.nav-button:focus-visible {
+  outline: 2px solid #10F2C5;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .planet-card,
+  .mission-progress,
+  .mission-stat {
+    background: #000000;
+    border-color: #ffffff;
+  }
+  
+  .planet-button,
+  .nav-button {
+    background: #000000;
+    border-color: #ffffff;
+    color: #ffffff;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .planet-card,
+  .planet-button,
+  .nav-button {
+    transition: none;
+  }
+  
+  .stars {
+    animation: none;
+  }
+  
+  .animate-float {
+    animation: none;
+  }
+}

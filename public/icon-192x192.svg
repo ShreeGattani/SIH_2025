@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="192" height="192" rx="24" fill="url(#gradient)"/>
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6B46C1"/>
+      <stop offset="50%" stop-color="#1E2A4A"/>
+      <stop offset="100%" stop-color="#0B1426"/>
+    </linearGradient>
+  </defs>
+  <!-- Rocket -->
+  <path d="M96 32L112 80L96 96L80 80Z" fill="#10F2C5"/>
+  <circle cx="96" cy="64" r="8" fill="#FFD700"/>
+  <!-- Stars -->
+  <circle cx="60" cy="50" r="2" fill="#F8FAFC"/>
+  <circle cx="140" cy="45" r="2" fill="#F8FAFC"/>
+  <circle cx="50" cy="130" r="2" fill="#F8FAFC"/>
+  <circle cx="150" cy="140" r="2" fill="#F8FAFC"/>
+  <!-- Text -->
+  <text x="96" y="130" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#F8FAFC">STEM</text>
+  <text x="96" y="150" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#10F2C5">Space</text>
+</svg>
